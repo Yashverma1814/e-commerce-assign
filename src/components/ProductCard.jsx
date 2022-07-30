@@ -25,6 +25,12 @@ export const ProductCard = (props) => {
           descs
           {props.item.desc}
         </Typography>
+        <Typography>
+          price : {props.item.price}
+        </Typography>
+        <Typography>
+          Rating : {props.item.rating}/5
+        </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">ADD TO CART</Button>
