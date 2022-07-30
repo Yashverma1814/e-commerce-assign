@@ -13,7 +13,7 @@ export const Login = () => {
   const [tokens,setTokens] = useState("");
   const dispatch = useDispatch();
   const token = useSelector((state) => state.loginReducer.token);
-  if(tokens === "QpwL5tke4Pnpja7X4"){
+  if(token === "QpwL5tke4Pnpja7X4"){
     return <Navigate to="/" />
   }
   const handleLogin = () => {
@@ -28,7 +28,6 @@ export const Login = () => {
       setTokens(res.data.token)
     }).catch(err => console.log(err))
     dispatch(loginSuccess(tokens));
-  
   }
   
   return (
@@ -41,6 +40,7 @@ export const Login = () => {
       <Button variant="contained" color="success" onClick={() => handleLogin()}>
         LOGIN
       </Button>
+      <br /><br />
     </div>
   )
 }

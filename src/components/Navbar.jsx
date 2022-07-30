@@ -16,11 +16,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Link } from '@mui/material';
+import {useSelector} from 'react-redux'
 
 
 export const Navbar = () => {
 
     const [state, setState] = React.useState(false);
+    const token = useSelector((state)=>state.loginReducer.token)
 
     const toggleDrawer = (open) => {
         setState(open);
@@ -87,9 +89,9 @@ export const Navbar = () => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         News
                     </Typography>
-                    <Link to='/login'>
+                    {token?<Link style={{color:"white"}}><Button color="inherit">Log out</Button></Link>:<Link to='/login' style={{color:"white"}}>
                         <Button color="inherit">Login</Button>
-                    </Link>
+                    </Link>}
                 </Toolbar>
             </AppBar>
         </Box>
