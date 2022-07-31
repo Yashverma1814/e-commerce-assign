@@ -1,13 +1,18 @@
 
 import * as React from 'react';
+
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 export const ProductCard = (props) => {
+  const setId = props.item.id;
+  const link = '/product/:'+setId;
+ 
   return (
     <div >
       <Card sx={{ maxWidth: 345 }} >
@@ -21,10 +26,7 @@ export const ProductCard = (props) => {
         <Typography gutterBottom variant="h5" component="div">
           {props.item.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary"> 
-          descs
-          {props.item.desc}
-        </Typography>
+        
         <Typography>
           price : {props.item.price}
         </Typography>
@@ -34,7 +36,9 @@ export const ProductCard = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small">ADD TO CART</Button>
-        <Button size="small">VIEW</Button>
+        <Link to={link}>
+          <Button size="small">VIEW</Button>
+        </Link>
       </CardActions>
     </Card>
     </div>
